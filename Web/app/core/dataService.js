@@ -3,11 +3,12 @@
 angular.module('Core').factory('dataService', [
   function () {
 	  var config = {
-		  apiKey: "AIzaSyBZ1tIZCA-vv-_SKTaCKL3k3rgzyTOj4dI",
-		  authDomain: "basesystemproject-dev.firebaseapp.com",
-		  databaseURL: "https://basesystemproject-dev.firebaseio.com",
-		  storageBucket: "basesystemproject-dev.appspot.com",
-		  messagingSenderId: "78101585072"
+		  apiKey: "AIzaSyAUT8vgpQQk5UL-V6nf5i-sWO305lW0GqY",
+		  authDomain: "yacantosystem-dev.firebaseapp.com",
+		  databaseURL: "https://yacantosystem-dev.firebaseio.com",
+		  projectId: "yacantosystem-dev",
+		  storageBucket: "yacantosystem-dev.appspot.com",
+		  messagingSenderId: "120832566712"
 	  };
 	  firebase.initializeApp(config);
 
