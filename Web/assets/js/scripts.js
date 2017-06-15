@@ -1,3 +1,4 @@
+
 // Base64 encoding service used by AuthenticationService
 var Base64 = {
     keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
@@ -63,4 +64,3 @@ var Base64 = {
         return output;
     }
 };
-

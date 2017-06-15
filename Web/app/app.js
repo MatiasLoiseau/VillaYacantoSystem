@@ -11,7 +11,7 @@ angular.module('YacantoApp', ['Core', 'Login', 'Layout'])
                 url: "/",
                 templateUrl: "layout/index.html"
             });
-    })
+        })
     .run(['$rootScope', '$state', '$stateParams', '$cookieStore', '$http',
         function($rootScope, $state, $stateParams, $cookieStore, $http) {
             $rootScope.$state = $state;
