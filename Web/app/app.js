@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('YacantoApp', ['Core', 'Login', 'Layout', 'Administrator', 'PropertyOwners'])
+angular.module('YacantoApp', ['Core', 'Login', 'Layout', 'Administrator', 'PropertyOwners', 'Multimedia'])
     .config(function($mdThemingProvider, $stateProvider, $urlRouterProvider) {
         $mdThemingProvider.theme('docs-dark', 'default')
             .primaryPalette('yellow')
@@ -9,7 +9,7 @@ angular.module('YacantoApp', ['Core', 'Login', 'Layout', 'Administrator', 'Prope
         $stateProvider
             .state('home', {
                 url: "/",
-                templateUrl: "layout/index.html"
+                templateUrl: "login/layout/index.html"
             });
         })
     .run(['$rootScope', '$state', '$stateParams', '$cookieStore', '$http',
