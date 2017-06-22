@@ -11,7 +11,7 @@ angular.module('Layout')
 angular.module('Layout')
     .directive('header', function() {
         return {
-            restrict: 'A',  //Si tengo la etiqueta "header", me trae este html
+            restrict: 'A',  
             templateUrl: 'layout/header.html'
         }
     });

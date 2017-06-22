@@ -9,7 +9,7 @@ angular.module('YacantoApp', ['Core', 'Login', 'Layout', 'Administrator', 'Prope
         $stateProvider
             .state('home', {
                 url: "/",
-                templateUrl: "login/layout/index.html"
+                templateUrl: "layout/index.html"
             });
         })
     .run(['$rootScope', '$state', '$stateParams', '$cookieStore', '$http',
