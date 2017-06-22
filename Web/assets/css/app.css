@@ -1,0 +1,21 @@
+.menuList ul
+{
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin: 0px;
+}
+.menuList li
+{
+    list-style-type: none;
+    display: inline;
+    padding-right: 30px;
+}
+
+.menuList > :last-child
+{
+    float:right;
+    position:absolute;
+    right:20px;
+}

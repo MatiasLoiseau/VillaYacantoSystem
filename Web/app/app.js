@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('YacantoApp', ['Core', 'Login', 'Layout'])
+angular.module('YacantoApp', ['Core', 'Login', 'Layout', 'Administrator', 'PropertyOwners'])
     .config(function($mdThemingProvider, $stateProvider, $urlRouterProvider) {
         $mdThemingProvider.theme('docs-dark', 'default')
             .primaryPalette('yellow')
