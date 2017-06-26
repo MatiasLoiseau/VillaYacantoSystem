@@ -8,8 +8,13 @@ angular.module('Administrator', ['Core'])
                 abstract: true,
                 template: "<ui-view />"
             })
+            .state('administrator.new', {
+                url: "/new",
+                templateUrl: "administrator/edit.html"
+            })
             .state('administrator.list', {
                 url: "/",
                 templateUrl: "administrator/index.html"
             })
     });
+
