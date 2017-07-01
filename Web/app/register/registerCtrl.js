@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('Administrator', ['ngRoute', 'firebase'])
-    .controller('registerCtrl', ['$scope', '$firebaseAuth', '$location', function($scope, $firebaseAuth, $location){
+
+angular.module('Register', ['ngRoute', 'firebase'])
+    .controller('RegisterCtrl', ['$scope', '$firebaseAuth', '$location', function($scope, $firebaseAuth, $location){
         $scope.signUp = function(){
             var username = $scope.user.email;
             var password = $scope.user.password;
