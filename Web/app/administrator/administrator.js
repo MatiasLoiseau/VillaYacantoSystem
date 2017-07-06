@@ -10,7 +10,8 @@ angular.module('Administrator', ['Core'])
             })
             .state('administrator.new', {
                 url: "/new",
-                templateUrl: "administrator/edit.html"
+                templateUrl: "administrator/edit.html",
+                controller:"administrator.new"
             })
             .state('administrator.list', {
                 url: "/",

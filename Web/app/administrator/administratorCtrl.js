@@ -1,8 +1,34 @@
 'use strict';
 
-angular.module('Administrator', ['ngRoute', 'firebase'])
-    .controller('registerCtrl', ['$scope', '$firebaseAuth', '$location', function($scope, $firebaseAuth, $location){
+angular.module('Administrator')
+    .controller('administrator.new', ['$scope', function($scope){
+        $scope.setup = function () {
+            $scope.newRegister = {
+                email: null,
+                password: null};
+        }
         $scope.signUp = function(){
+            console.log($scope.newRegister);
+            var email = $scope.newRegister.email;
+            var password = $scope.newRegister.password;
+
+            if(email && password){
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .catch(function(error) {
+                        // Handle Errors here.
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        if (errorCode == 'auth/weak-password') {
+                            alert('The password is too weak.');
+                        } else {
+                            alert(errorMessage);
+                        }
+                        console.log(error);
+                    });
+            }
+        }
+
+        /*$scope.signUp = function(){
             var username = $scope.user.email;
             var password = $scope.user.password;
 
@@ -16,5 +42,9 @@ angular.module('Administrator', ['ngRoute', 'firebase'])
                     $scope.errorMessage = error.message;
                 });
             }
-        }
+        }*/
+
+        $scope.setup();
     }]);
+
+
