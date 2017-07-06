@@ -6,11 +6,13 @@ angular.module('Administrator')
             $scope.newRegister = {
                 email: null,
                 password: null};
+            $scope.propertyOwnerEditing={id:null, email: null};
+            console.log($scope.propertyOwnerEditing);
         }
         $scope.signUp = function(){
-            console.log($scope.newRegister);
             var email = $scope.newRegister.email;
             var password = $scope.newRegister.password;
+            $scope.propertyOwnerEditing.email = email;
 
             if(email && password){
                 firebase.auth().createUserWithEmailAndPassword(email, password)
