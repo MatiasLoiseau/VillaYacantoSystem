@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('Administrator')
-    .controller('administrator.new', ['$scope', function($scope){
+    .controller('administrator.new', ['$scope', 'propertyOwnerService', function($scope, propertyOwnerService){
         $scope.setup = function () {
             $scope.newRegister = {
                 email: null,
                 password: null};
             $scope.propertyOwnerEditing={id:null, email: null};
-            console.log($scope.propertyOwnerEditing);
+            $scope.cuilRegExpr = '^\\d{2}-\\d{8}-\\d{1}$';
         }
         $scope.signUp = function(){
             var email = $scope.newRegister.email;
@@ -28,6 +28,16 @@ angular.module('Administrator')
                         console.log(error);
                     });
             }
+        }
+
+        $scope.save = function () {
+            $scope.propertyOwnerSaved = false;
+            propertyOwnerService.save($scope.propertyOwnerEditing, onPropertyOwnerSaved);
+        }
+
+        var onPropertyOwnerSaved = function () {
+            $scope.propertyOwnerSaved = true;
+            $scope.$apply();
         }
 
         /*$scope.signUp = function(){

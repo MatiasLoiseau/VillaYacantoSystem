@@ -1,3 +1,48 @@
 <div>
-    <p>Datos personales de Dueño</p>
+    <form name="propertyOwnerForm">
+        <div layout="row">
+            <md-input-container flex="20">
+                <label>Apellido</label>
+                <input required="" name="surname" ng-disabled="readOnlyMode" ng-model="propertyOwnerEditing.surname">
+                <div ng-messages="propertyOwnerForm.surname.$error">
+                    <div ng-message="required">Campo requerido.</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex="20">
+                <label>Nombre</label>
+                <input required="" name="name" ng-disabled="readOnlyMode" ng-model="propertyOwnerEditing.name">
+                <div ng-messages="propertyOwnerForm.name.$error">
+                    <div ng-message="required">Campo requerido.</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container flex="9">
+                <label>DNI</label>
+                <input required="" type="number" ng-disabled="readOnlyMode" ng-maxlength="8" name="dni" ng-model="propertyOwnerEditing.dni" ng-change="dniValidation(propertyOwnerEditing.dni)">
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container flex="12">
+                <label>Cuil/Cuit</label>
+                <input required="" ng-pattern="cuilRegExpr" ng-disabled="readOnlyMode" placeholder="##-########-#" name="cuilCuit" ng-model="propertyOwnerEditing.cuilCuit">
+                <div ng-messages="propertyOwnerEditing.cuilCuit.$error">
+                    <div ng-message="required">Campo requerido.</div>
+                    <div ng-message="pattern">Formato esperado: ##-########-#.</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex="30">
+                <label>Email</label>
+                <input type="email" class="form-control" ng-disabled="readOnlyMode" placeholder="example@email.com" name="email" ng-model="propertyOwnerEditing.email" required>
+                <div ng-messages="propertyOwnerForm.email.$error">
+                    <div ng-message="required">Campo requerido.</div>
+                    <div ng-message="email">Mail invalido.</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div>
+            <md-button ng-show=" !readOnlyMode" class="md-raised md-primary" ng-disabled="propertyOwnerForm.$invalid || dataLoading" ng-click="save()">Guardar</md-button>
+            <label ng-show="propertyOwnerSaved">Guardado!</label>
+        </div>
+    </form>
 </div>
