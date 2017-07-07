@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('Layout')
-    .controller('layoutCtrl', ['$scope', 'authenticationService', 'propertyOwnerService',
-        function ($scope, authenticationService, propertyOwnerService) {
+    .controller('layoutCtrl', ['$scope', 'authenticationService', 'propertyOwnerService', 'scopedTimeout',
+        function ($scope, authenticationService, propertyOwnerService, scopedTimeout) {
             $scope.authenticationService = authenticationService;
             $scope.$watch('authenticationService.isAuthenticated()', function(newVal) {
                 $scope.isAuthenticated = newVal;
@@ -10,19 +10,20 @@ angular.module('Layout')
             });
 
             $scope.setup = function () {
-                loadPropertyOwners();
-                $scope.showContent();
+                scopedTimeout($scope).timeout(function () {
+                    loadPropertyOwners();
+                    $scope.showContent();
+                })
             }
 
             $scope.showContent = function () {
-                console.log($scope.username);
+                console.log($scope.username + " algo");
                 if($scope.username!=null && $scope.username!= undefined){
                     $scope.isAdmin = false;
                     console.log($scope.username);
                     if( $scope.username=="admin@yacanto.com"){
                         console.log("Entre");
                         $scope.isAdmin = true;
-                        $scope.$apply();
                     }
                 }
                 console.log($scope.isAdmin);

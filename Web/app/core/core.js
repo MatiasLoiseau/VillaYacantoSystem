@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('Core', ['ngMaterial', 'ui.router', 'ngCookies', 'ngFileUpload']);
+angular.module('Core', ['ngMaterial', 'ui.router', 'ngCookies', 'ngFileUpload', 'rt.timeout']);
