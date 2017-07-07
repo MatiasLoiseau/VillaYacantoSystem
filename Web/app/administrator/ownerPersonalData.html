@@ -41,7 +41,7 @@
             </md-input-container>
         </div>
         <div>
-            <md-button ng-show=" !readOnlyMode" class="md-raised md-primary" ng-disabled="propertyOwnerForm.$invalid || dataLoading" ng-click="save()">Guardar</md-button>
+            <md-button ng-show=" !readOnlyMode" class="md-raised md-primary" ng-disabled="propertyOwnerForm.$invalid || dataLoading || propertyOwnerSaved" ng-click="save()">Guardar</md-button>
             <label ng-show="propertyOwnerSaved">Guardado!</label>
         </div>
     </form>

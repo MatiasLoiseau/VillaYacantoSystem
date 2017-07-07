@@ -8,11 +8,12 @@ angular.module('Administrator')
                 password: null};
             $scope.propertyOwnerEditing={id:null, email: null};
             $scope.cuilRegExpr = '^\\d{2}-\\d{8}-\\d{1}$';
+            $scope.propertyOwnerSaved = false;
+            $scope.newRegisterSaved = false;
         }
         $scope.signUp = function(){
             var email = $scope.newRegister.email;
             var password = $scope.newRegister.password;
-            $scope.propertyOwnerEditing.email = email;
 
             if(email && password){
                 firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -27,12 +28,14 @@ angular.module('Administrator')
                         }
                         console.log(error);
                     });
+                $scope.newRegisterSaved = true;
             }
         }
 
         $scope.save = function () {
             $scope.propertyOwnerSaved = false;
             propertyOwnerService.save($scope.propertyOwnerEditing, onPropertyOwnerSaved);
+            $scope.newRegister.email=$scope.propertyOwnerEditing.email;
         }
 
         var onPropertyOwnerSaved = function () {
