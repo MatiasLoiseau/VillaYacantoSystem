@@ -103,7 +103,18 @@ angular.module('Administrator')
     }]);
 
 angular.module('Administrator')
-    .controller('administrator.property', ['$scope', 'propertyOwnerService', function($scope, propertyOwnerService){
+    .controller('administrator.property', ['$scope', 'propertyOwnerService', function($scope, propertyService){
         $scope.setup = function () {
+            $scope.propertyEditing = {};
         };
+
+        $scope.addNewProperty = function () {
+            propertyService.addProperty($scope.propertyOwnerEditing, $scope.propertyEditing, onPropertyUpdated);
+        };
+
+        var onPropertyUpdated = function () {
+            $scope.propertySaved = true;
+            $scope.propertyEditing = {id: null};
+            $scope.$apply();
+        }
     }]);

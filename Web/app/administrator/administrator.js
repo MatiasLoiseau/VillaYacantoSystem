@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('Administrator', ['Core', 'PropertyOwners'])
+angular.module('Administrator', ['Core', 'PropertyOwners', 'Property'])
     .config(function($stateProvider) {
         $stateProvider
             .state('administrator', {
