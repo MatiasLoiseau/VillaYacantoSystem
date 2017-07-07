@@ -1,10 +1,10 @@
 {
-  "name": "siisp",
+  "name": "yacanto",
   "homepage": "https://github.com/seasyapp/mechanic-backoffice",
-  "description": "Proyecto para la secretaria de investigacion",
+  "description": "Proyecto para Ingeniería de Software",
   "main": "\\Web\\app\\index.html",
   "keywords": [
-    "siisp",
+    "yacanto",
     "undav"
   ],
   "authors": [

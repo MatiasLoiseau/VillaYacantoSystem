@@ -1,16 +1,26 @@
 'use strict';
 
 angular.module('Administrator')
-    .controller('administrator.new', ['$scope', 'propertyOwnerService', function($scope, propertyOwnerService){
+    .controller('administrator.new', ['$scope', 'propertyOwnerService','$stateParams', function($scope, propertyOwnerService, $stateParams){
         $scope.setup = function () {
-            $scope.newRegister = {
-                email: null,
-                password: null};
-            $scope.propertyOwnerEditing={id:null, email: null};
+            if (isAddingANewPropertyOwner()) {
+                $scope.newRegister = {
+                        email: null,
+                        password: null};
+                $scope.propertyOwnerEditing={
+                        id:null,
+                        email: null};
+                $scope.isEditing = false;
+            } else {
+                $scope.isEditing = true;
+                propertyOwnerService.getPropertyOwner($stateParams.id, setPropertyOwnersToEdit);
+            }
+
             $scope.cuilRegExpr = '^\\d{2}-\\d{8}-\\d{1}$';
             $scope.propertyOwnerSaved = false;
             $scope.newRegisterSaved = false;
         }
+
         $scope.signUp = function(){
             var email = $scope.newRegister.email;
             var password = $scope.newRegister.password;
@@ -40,26 +50,60 @@ angular.module('Administrator')
 
         var onPropertyOwnerSaved = function () {
             $scope.propertyOwnerSaved = true;
-            $scope.$apply();
+            if(isAddingANewPropertyOwner())
+            {
+                $stateParams.id = $scope.propertyOwnerEditing.id;
+                propertyOwnerService.getPropertyOwner($scope.propertyOwnerEditing.id, setPropertyOwnersToEdit);
+            }
+            else
+            {
+                $scope.$apply();
+            }
         }
 
-        /*$scope.signUp = function(){
-            var username = $scope.user.email;
-            var password = $scope.user.password;
+        var setPropertyOwnersToEdit = function (propertyOwner) {
+            $scope.propertyOwnerEditing = propertyOwner;
+        }
 
-            if(username && password){
-                var auth = $firebaseAuth();
-                auth.$createUserWithEmailAndPassword(username, password).then(function(){
-                    console.log("User Successfully Created");
-                    $location.path('/login');
-                }).catch(function(error){
-                    $scope.errMsg = true;
-                    $scope.errorMessage = error.message;
-                });
-            }
-        }*/
+        var isAddingANewPropertyOwner=function () {
+            return $stateParams.id == undefined;
+        }
 
         $scope.setup();
     }]);
 
 
+angular.module('Administrator')
+    .controller('administrator.list', ['$scope', 'propertyOwnerService', function($scope, propertyOwnerService){
+            $scope.setup = function () {
+                $scope.firstTime = true;
+                loadPropertyOwners();
+                $scope.readOnlyMode = false;
+            };
+            var loadPropertyOwners = function () {
+                    propertyOwnerService.getPropertyOwners(refreshPropertyOwners);
+                },
+                refreshPropertyOwners = function(propertyOwners){
+                    if(propertyOwners == null || Object.keys(propertyOwners).length==0){
+                        $scope.propertyOwners = null;
+                    }else{
+                        $scope.propertyOwners = propertyOwners;
+                    }
+                    if($scope.firstTime)
+                    {
+                        $scope.$apply();
+                        $scope.firstTime = false;
+                    }
+                }
+
+        $scope.deletePropertyOwner = function (propertyOwner) {
+            propertyOwnerService.removePropertyOwner(propertyOwner);
+        }
+                $scope.setup();
+    }]);
+
+angular.module('Administrator')
+    .controller('administrator.property', ['$scope', 'propertyOwnerService', function($scope, propertyOwnerService){
+        $scope.setup = function () {
+        };
+    }]);

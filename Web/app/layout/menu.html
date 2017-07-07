@@ -1,4 +1,4 @@
-<div>
+<div ng-init="setup()">
     <md-toolbar>
         <div class="md-toolbar-tools menuList">
             <ul>
@@ -6,13 +6,13 @@
                     <a ui-sref="home">Inicio</a>
                 </li>
                 <li>
-                    <a ui-sref="administrator.list">Dueños de Complejo</a>
+                    <a ui-sref="administrator.list" ng-show="isAdmin" >Dueños de Complejo</a>
                 </li>
                 <li>
-                    <a ui-sref="propertyOwners.list">Complejos</a>
+                    <a ui-sref="propertyOwners.list" ng-show="!isAdmin">Complejos</a>
                 </li>
                 <li>
-                    <a ui-sref="multimedia.list">Multimedia</a>
+                    <a ui-sref="multimedia.list" ng-show="isAdmin">Multimedia</a>
                 </li>
             </ul>
             <div>

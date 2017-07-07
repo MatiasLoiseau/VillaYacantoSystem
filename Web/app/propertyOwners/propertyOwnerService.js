@@ -7,9 +7,15 @@ angular.module('PropertyOwners').factory('propertyOwnerService', ['dataService',
             getPropertyOwner: function (id, callback) {
                 dataService.getData('propertyOwners/' + id, callback);
             },
-            getpropertyOwners: function(callback){
+            getPropertyOwners: function(callback){
                 dataService.getData('propertyOwners', callback);
             },
+            removePropertyOwner: function (propertyOwner) {
+            if (propertyOwner.id == null)
+                return;
+            var referenceName = 'propertyOwners';
+            dataService.deleteObject(referenceName, propertyOwner);
+            }
         };
     }
 ]);

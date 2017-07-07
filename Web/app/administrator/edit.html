@@ -6,7 +6,7 @@
                     <md-content class="md-padding">
                         <div ng-include src="'administrator/ownerPersonalData.html'" ></div>
                     </md-content>
-                    <md-tab label="Registrar" data-ng-if="propertyOwnerEditing.id!=null">
+                    <md-tab label="Registrar" data-ng-if="propertyOwnerEditing.id!=null && isEditing==false">
                         <md-content class="md-padding">
                             <div ng-include src="'administrator/ownerRegistration.html'"></div>
                         </md-content>

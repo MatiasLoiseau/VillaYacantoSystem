@@ -1,3 +1,52 @@
-<div>
-    <p>Lista de Dueños de Complejo</p>
-</div>
+<div ng-controller="administrator.list" ng-init="setup()">
+    <div>
+        <div layout="row" ng-show="propertyOwners === undefined" layout-sm="column" layout-align="left">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+            </br>
+        </div>
+        <div>
+            <label ng-show="propertyOwners===null">No hay Dueños de Complejo.</label>
+            </br>
+        </div>
+        <table ng-show="propertyOwners!=null" >
+            <tr>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>DNI</th>
+                <th>Email</th>
+                <th>Complejos</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="propertyOwner in propertyOwners">
+                <td>
+                    <h5>{{propertyOwner.surname}}</h5>
+                </td>
+                <td>
+                    <h5>{{propertyOwner.name}}</h5>
+                </td>
+                <td>
+                    <h5>{{propertyOwner.dni}}</h5>
+                </td>
+                <td>
+                    <h5>{{propertyOwner.email}}</h5>
+                </td>
+                <td>
+                    <!--<label ng-show="(researcher.formations|toArray).length == 0 ">No hay formaciones cargadas</label>
+                    <md-list>
+                        <md-list-item class="md-3-line" ng-repeat="formation in researcher.formations | toArray">
+                            <div class="md-list-item-text">
+                                <h3>{{formation.type}}</h3>
+                                <h3>{{parametrics['degreeArea'][formation.degreeArea].careers[formation.career].name}}</h3>
+                            </div>
+                            <md-divider md-inset ng-if="!$last"></md-divider>
+                        </md-list-item>
+                    </md-list>-->
+                </td>
+                <td>
+                    <md-button class="md-raised md-primary" ui-sref="administrator.edit({id:propertyOwner.id})">Editar</md-button>
+                    <md-button class="md-raised md-primary" ng-click="deletePropertyOwner(propertyOwner)">Eliminar</md-button>
+                    <md-button class="md-raised md-primary" ui-sref="administrator.property({id:propertyOwner.id})">Agregar Complejo</md-button>
+                </td>
+            </tr>
+        </table>
+
