@@ -1,3 +1,31 @@
-<div>
-    <p>Lista de Complejo</p>
+<div ng-controller="propertyOwner.list" ng-init="setup()">
+    <div>
+        <div layout="row" ng-show="properties === undefined" layout-sm="column" layout-align="left">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+            </br>
+        </div>
+        <div>
+            <label ng-show="properties===null">No hay Complejos.</label>
+            </br>
+        </div>
+        <table ng-show="properties!=null" >
+            <tr>
+                <th>Nombre</th>
+                <th>Capacidad</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="property in properties">
+                <td>
+                    <h5>{{property.name}}</h5>
+                </td>
+                <td>
+                    <h5>{{property.capacity}}</h5>
+                </td>
+                <td>
+                    <md-button class="md-raised md-primary">Editar</md-button>
+                    <md-button class="md-raised md-primary" ng-click=" deleteFormation(property)">Eliminar</md-button>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

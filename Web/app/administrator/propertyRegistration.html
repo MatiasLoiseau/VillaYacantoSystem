@@ -10,14 +10,14 @@
             </md-input-container>
             <md-input-container flex="20">
                 <label>Capacidad</label>
-                <input required="" name="capacitty" ng-disabled="readOnlyMode" ng-model="propertyEditing.Capacity">
+                <input required="" name="capacitty" ng-disabled="readOnlyMode" ng-model="propertyEditing.capacity">
                 <div ng-messages="propertyOwnerForm.name.$error">
                     <div ng-message="required">Campo requerido.</div>
                 </div>
             </md-input-container>
         </div>
         <div>
-            <md-button ng-show=" !readOnlyMode" class="md-raised md-primary" ng-disabled="propertyOwnerForm.$invalid || dataLoading || propertyOwnerSaved" ng-click="addNewProperty()">Guardar</md-button>
+            <md-button ng-show=" !readOnlyMode" class="md-raised md-primary" ng-disabled="propertySaved || propertyOwnerForm.$invalid || dataLoading || propertyOwnerSaved" ng-click="addNewProperty()">Guardar</md-button>
             <label ng-show="propertySaved">Guardado!</label>
         </div>
     </form>

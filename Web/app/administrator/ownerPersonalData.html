@@ -1,6 +1,14 @@
 <div>
     <form name="propertyOwnerForm">
         <div layout="row">
+            <md-input-container>
+                <md-radio-group ng-model="propertyOwnerEditing.type">
+                    <md-radio-button value="cabañero" class="md-primary">Cabañero</md-radio-button>
+                    <md-radio-button value="posadero"> Posadero </md-radio-button>
+                </md-radio-group>
+            </md-input-container>
+        </div>
+        <div layout="row">
             <md-input-container flex="20">
                 <label>Apellido</label>
                 <input required="" name="surname" ng-disabled="readOnlyMode" ng-model="propertyOwnerEditing.surname">

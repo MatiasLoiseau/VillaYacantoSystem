@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('PropertyOwners', ['Core'])
+angular.module('PropertyOwners', ['Core', 'Property'])
     .config(function($stateProvider) {
         $stateProvider
             .state('propertyOwners', {

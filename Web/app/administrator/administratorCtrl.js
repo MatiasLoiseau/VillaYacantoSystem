@@ -94,22 +94,23 @@ angular.module('Administrator')
                         $scope.$apply();
                         $scope.firstTime = false;
                     }
-                }
+                };
 
         $scope.deletePropertyOwner = function (propertyOwner) {
             propertyOwnerService.removePropertyOwner(propertyOwner);
-        }
+        };
                 $scope.setup();
     }]);
 
 angular.module('Administrator')
-    .controller('administrator.property', ['$scope', 'propertyOwnerService', function($scope, propertyService){
+    .controller('administrator.property', ['$scope', 'propertyService', '$stateParams', function($scope, propertyService, $stateParams){
         $scope.setup = function () {
             $scope.propertyEditing = {};
+            $scope.propertySaved = false;
         };
 
         $scope.addNewProperty = function () {
-            propertyService.addProperty($scope.propertyOwnerEditing, $scope.propertyEditing, onPropertyUpdated);
+            propertyService.addProperty($stateParams, $scope.propertyEditing, onPropertyUpdated);
         };
 
         var onPropertyUpdated = function () {
