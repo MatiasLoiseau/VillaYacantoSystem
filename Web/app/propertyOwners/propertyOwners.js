@@ -12,4 +12,8 @@ angular.module('PropertyOwners', ['Core', 'Property'])
                 url: "/",
                 templateUrl: "propertyOwners/index.html"
             })
+            .state('propertyOwners.edit', {
+                url: "/edit/{id}",
+                templateUrl: "propertyOwners/editProperty.html"
+            })
     });

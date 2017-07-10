@@ -19,3 +19,23 @@
     position:absolute;
     right:20px;
 }
+
+
+
+.loginBody{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loginBox {
+    max-width:  100%;
+    width: 300px
+}
+
+.stretch input  {
+    width: auto
+}
+
+

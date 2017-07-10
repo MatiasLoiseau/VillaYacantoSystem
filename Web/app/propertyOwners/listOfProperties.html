@@ -22,8 +22,8 @@
                     <h5>{{property.capacity}}</h5>
                 </td>
                 <td>
-                    <md-button class="md-raised md-primary">Editar</md-button>
-                    <md-button class="md-raised md-primary" ng-click=" deleteFormation(property)">Eliminar</md-button>
+                    <md-button class="md-raised md-primary" ui-sref="propertyOwners.edit({id: property.id})" >Editar </md-button>
+                    <md-button class="md-raised md-primary" ng-click=" deleteProperty(property)">Eliminar</md-button>
                 </td>
             </tr>
         </table>

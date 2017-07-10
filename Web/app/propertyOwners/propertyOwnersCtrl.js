@@ -1,13 +1,17 @@
 'use strict';
 
 angular.module('PropertyOwners')
-    .controller('propertyOwner.list', ['$scope', 'propertyService', 'propertyOwnerService' , 'authenticationService', function($scope, propertyService, propertyOwnerService, authenticationService){
+    .controller('propertyOwner.list', ['$scope', 'propertyService', 'propertyOwnerService' , 'authenticationService', '$stateParams', function($scope, propertyService, propertyOwnerService, authenticationService, $stateParams){
         $scope.setup = function () {
             $scope.emailUser = authenticationService.getCurrentUsername();
             $scope.firstTime = true;
+            $scope.propertyEditing = {};
             $scope.currentOwner = {};
             $scope.propertyOwners = {};
+
+
             loadPropertyOwners();
+            propertyService.getProperty($scope.currentOwner ,$stateParams.id, setPropertyToEdit);
             $scope.readOnlyMode = false;
         };
         var loadPropertyOwners = function () {
@@ -47,6 +51,24 @@ angular.module('PropertyOwners')
                     }
                 }
             }*/;
+
+        $scope.save = function () {
+                $scope.propertySaved = false;
+                propertyService.addProperty( $scope.currentOwner, $scope.propertyEditing, onPropertySaved);
+            };
+            
+
+
+        var onPropertySaved = function () {
+            $scope.propertySaved = true;
+            $stateParams.id = $scope.propertyEditing.id;
+            $scope.apply();
+            };
+        
+
+        var setPropertyToEdit = function (property) {
+            $scope.propertyEditing = property;
+        };
 
         $scope.deleteProperty = function (property) {
             propertyService.removeOwnersProperty($scope.currentOwner, property);

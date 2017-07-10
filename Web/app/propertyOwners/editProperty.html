@@ -1,0 +1,24 @@
+<div>
+    <form name="propertyForm" ng-controller="propertyOwner.list" ng-init="setup()">
+        <div layout="row">
+            <md-input-container flex="20">
+                <label>Nombre de Complejo</label>
+                <input required="" name="propertyName" ng-disabled="readOnlyMode" ng-model="propertyEditing.name">
+                <div ng-messages="propertyForm.surname.$error">
+                    <div ng-message="required">Campo requerido.</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex="20">
+                <label>Capacidad</label>
+                <input required="" name="capacitty" ng-disabled="readOnlyMode" ng-model="propertyEditing.capacity">
+                <div ng-messages="propertyForm.name.$error">
+                    <div ng-message="required">Campo requerido.</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div>
+            <md-button ng-show=" !readOnlyMode" class="md-raised md-primary" ng-disabled="propertySaved || propertyForm.$invalid || dataLoading" ng-click="save()">Guardar</md-button>
+            <label ng-show="propertySaved">Guardado!</label>
+        </div>
+    </form>
+</div>

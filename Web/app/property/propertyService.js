@@ -7,6 +7,9 @@ angular.module('Property').factory('propertyService', ['dataService',
                 var referenceName = 'propertyOwners/' + propertyOwner.id + '/properties';
                 dataService.saveObject(referenceName, property, onPropertyUpdated);
             },
+            getProperty: function (propertyOwner, id, callback) {
+                dataService.getData('propertyOwners/' + propertyOwner.id+'/properties/'+id, callback);
+            },
             removeOwnersProperty: function (propertyOwner, property) {
                 if (propertyOwner.id == null ||  property.id == null)
                     return;
